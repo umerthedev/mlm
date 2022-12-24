@@ -5,10 +5,11 @@ namespace App\Http\Controllers\User\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     public function index()
     {
-        return view('user.auth.login');
+        return view('user.auth.registration');
     }
+    
 }

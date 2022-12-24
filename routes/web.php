@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Auth\LoginController;
+use App\Http\Controllers\User\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,8 @@ Route::get('/',[HomeController::class,'index'])->name('user.home');
 
 //LoginRoute
 Route::get('/login',[LoginController::class,'index'])->name('user.login');
+
+//RegisterRoute
+Route::get('/register',[RegisterController::class,'index'])->name('user.resister');
 
 

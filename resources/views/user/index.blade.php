@@ -63,7 +63,7 @@
                     </ul>
                     <div class="d-flex ms-lg-4"><a class="btn btn-secondary-outline"
                             href="{{ route('user.login') }}">Sign In</a><a class="btn btn-warning ms-3"
-                            href="#!">Sign Up</a></div>
+                            href="{{ route('user.resister') }}">Sign Up</a></div>
                 </div>
             </div>
         </nav>
