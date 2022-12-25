@@ -15,10 +15,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('phone')->unique();
+            $table->string('sponsor_code');
+            $table->bigInteger('direct_group')->default(0);
+            $table->bigInteger('total_group')->default(0);
             $table->timestamp('email_verified_at')->nullable();
+            $table->float('total_deposite')->default(0);
             $table->string('password');
+            $table->tinyInteger('is_active')->default(0);
+            $table->string('active_date')->nullable();
+            $table->float('total_income')->default(0);
+            $table->float('total_withdrawl')->default(0);
+            $table->float('current_withdrawl_request')->default(0);
+            $table->bigInteger('total_group_active')->default(0);
+            $table->bigInteger('total_group_deposite')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
