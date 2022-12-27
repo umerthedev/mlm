@@ -32,7 +32,7 @@ return new class extends Migration
             $table->float('total_withdrawl')->default(0);
             $table->float('current_withdrawl_request')->default(0);
             $table->bigInteger('total_group_active')->default(0);
-            $table->bigInteger('total_group_deposite')->default(0);
+            $table->float('total_group_deposite')->default(0);
             $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
