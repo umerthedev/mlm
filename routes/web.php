@@ -29,4 +29,7 @@ Route::get('/login',[LoginController::class,'index'])->name('user.login');
 //RegisterRoute
 Route::get('/register',[RegisterController::class,'index'])->name('user.resister');
 
+//SponsorsearchRoute
+Route::post('/searchsponsor',[RegisterController::class,'searchsponsor'])->name('search.sponsorid');
+
 
