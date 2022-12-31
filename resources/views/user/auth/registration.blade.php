@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <div class="form-check">
+                  <div class="form-check" id="chk">
                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                     <label class="form-check-label" for="terms-conditions">
                       I agree to
@@ -187,15 +187,17 @@
                     </label>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary d-grid w-100">Sign up</button>
+                <div class="showbtn">
+                <button type="submit"  class="btn btn-primary d-grid w-100">Sign up</button></div>
               </form>
-
-              <p class="text-center">
+              <div class="logs">
+              <p class="text-center" >
                 <span>Already have an account?</span>
                 <a href="{{ route('user.login') }}">
                   <span>Sign in instead</span>
                 </a>
               </p>
+            </div>
             </div>
           </div>
           <!-- Register Card -->
@@ -221,12 +223,21 @@
                     },
                     success: function(result) {
                         if (result == 0) {
-                            $("#sopn_msg").text('Sponsor ID not found');
-                            $("#sopn_msg").css("color", "red");
+                            $("#sopn_msg").text("Sponsor ID not found");
+                            $("#sopn_msg").css('color', 'red');
+                            $(".showbtn").hide();
+                            $(".logs").hide();
+                            $("#chk").hide();
+
+
 
                         } else {
                             $("#sopn_msg").text(result);
-                            $("#sopn_msg").css("color", "green");
+                            $("#sopn_msg").css('color', 'green');
+                            $(".showbtn").show();
+                            $(".logs").show();
+                            $("#chk").show();
+
 
                         }
                     }

@@ -22,7 +22,7 @@ class RegisterController extends Controller
             echo $data->first_name;
         }else{
             // return redirect()->back()->with('error','Sponsor ID not found');
-            echo "Sponsor ID not found";
+            // echo "Sponsor ID not found";
         }
 
     }
