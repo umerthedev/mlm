@@ -89,96 +89,76 @@
               <!-- /Logo -->
               
 
-              <form id="formAuthentication" class="mb-3" action="" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('user.reg') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="sponsor_id"
-                    name="sponsor_code"
-                    placeholder="Enter Sponsor Code"
-                    autofocus
-                  />
+                  <input type="text" class="form-control" id="sponsor_id" name="sponsor_code" value="{{ old('sponsor_code') }}" placeholder="Enter Sponsor Code" autofocus />
                   <span id="sopn_msg"></span>
+                  @error('sponsor_code')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
+                  
+          
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="username" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" autofocus/>
+                  @error('first_name')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3">
                   <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="first_name"
-                    placeholder="First Name"
-                    autofocus
-                  />
+                    type="text" class="form-control" id="username" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autofocus />
+                  @error('last_name')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="last_name"
-                    placeholder="Last Name"
-                    autofocus
-                  />
+                  <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" placeholder="Create Your User Name" autofocus />
+                  @error('username')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="user_name"
-                    placeholder="Create Your User Name"
-                    autofocus
-                  />
+                  <input type="text" class="form-control"  name="phone" value="{{ old('phone') }}" placeholder="Phone Number" autofocus />
+                  @error('phone')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="phone"
-                    placeholder="Phone Number"
-                    autofocus
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                  type="text"
-                  class="form-control"
-                  id="email" name="email"
-                  placeholder="Enter your email"
-                  />
+                  <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" />
+                  @error('email')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="input-group input-group-merge">
-                    <input
-                      placeholder="Password"
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
+                    <input placeholder="Password" type="password" id="password" class="form-control" name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
+                   
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  @error('password')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="input-group input-group-merge">
-                    <input
-                      placeholder="Confirm Password"
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
+                    <input placeholder="Confirm Password" type="password" id="password" class="form-control" name="password_confirmation"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
+                   
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
+                  @error('confirmed_password')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
-
-                <div class="mb-3">
+                      
+                {{-- <div class="mb-3">
                   <div class="form-check" id="chk">
                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                     <label class="form-check-label" for="terms-conditions">
@@ -186,83 +166,81 @@
                       <a href="javascript:void(0);">privacy policy & terms</a>
                     </label>
                   </div>
-                </div>
+                </div> --}}
                 <div class="showbtn">
                 <button type="submit"  class="btn btn-primary d-grid w-100">Sign up</button></div>
-              </form>
-              <div class="logs">
-              <p class="text-center" >
-                <span>Already have an account?</span>
-                <a href="{{ route('user.login') }}">
-                  <span>Sign in instead</span>
-                </a>
-              </p>
-            </div>
-            </div>
-          </div>
-          <!-- Register Card -->
-        </div>
-      </div>
+            </form>
+      <div class="logs">
+      <p class="text-center" >
+        <span>Already have an account?</span>
+        <a href="{{ route('user.login') }}">
+          <span>Sign in instead</span>
+        </a>
+      </p>
     </div>
+    </div>
+  </div>
+  <!-- Register Card -->
+</div>
+</div>
+</div>
 
-    <!-- / Content -->
+<!-- / Content -->
 
-   
-    
-    <script>
-        $(document).ready(function() {
-            $('#sponsor_id').on('keyup', function() {
-                $("#sopn_msg").text('Searching...');
-                var sponsor_id = this.value;
-                $.ajax({
-                    url: "{{ route('search.sponsorid') }}",
-                    type: "POST",
-                    data: {
-                        sponsor_id: sponsor_id,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(result) {
-                        if (result == 0) {
-                            $("#sopn_msg").text("Sponsor ID not found");
-                            $("#sopn_msg").css('color', 'red');
-                            $(".showbtn").hide();
-                            $(".logs").hide();
-                            $("#chk").hide();
-
-
-
-                        } else {
-                            $("#sopn_msg").text(result);
-                            $("#sopn_msg").css('color', 'green');
-                            $(".showbtn").show();
-                            $(".logs").show();
-                            $("#chk").show();
+<script>
+    $(document).ready(function() {
+        $('#sponsor_id').on('keyup', function() {
+            $("#sopn_msg").text('Searching...');
+            var sponsor_id = this.value;
+            $.ajax({
+                url: "{{ route('search.sponsorid') }}",
+                type: "POST",
+                data: {
+                    sponsor_id: sponsor_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(result) {
+                    if (result == 0) {
+                        $("#sopn_msg").text("Sponsor ID not found");
+                        $("#sopn_msg").css('color', 'red');
+                        $(".showbtn").hide();
+                        $(".logs").hide();
+                        $("#chk").hide();
 
 
-                        }
+
+                    } else {
+                        $("#sopn_msg").text(result);
+                        $("#sopn_msg").css('color', 'green');
+                        $(".showbtn").show();
+                        $(".logs").show();
+                        $("#chk").show();
+
+
                     }
-                });
+                }
             });
         });
-    </script>
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/popper/popper.js"></script>
-    <script src="{{ asset('') }}dashboard_assets/assets/vendor/js/bootstrap.js"></script>
-    <script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    });
+</script>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/popper/popper.js"></script>
+<script src="{{ asset('') }}dashboard_assets/assets/vendor/js/bootstrap.js"></script>
+<script src="{{ asset('') }}dashboard_assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="{{ asset('') }}dashboard_assets/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
+<script src="{{ asset('') }}dashboard_assets/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
 
-    <!-- Vendors JS -->
+<!-- Vendors JS -->
 
-    <!-- Main JS -->
-    <script src="{{ asset('') }}dashboard_assets/assets/js/main.js"></script>
+<!-- Main JS -->
+<script src="{{ asset('') }}dashboard_assets/assets/js/main.js"></script>
 
-    <!-- Page JS -->
+<!-- Page JS -->
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
 </html>

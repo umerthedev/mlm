@@ -31,5 +31,7 @@ Route::get('/register',[RegisterController::class,'index'])->name('user.resister
 
 //SponsorsearchRoute
 Route::post('/searchsponsor',[RegisterController::class,'searchsponsor'])->name('search.sponsorid');
+//user registration
+Route::post('/store',[RegisterController::class,'register'])->name('user.reg');
 
 

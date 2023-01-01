@@ -26,5 +26,19 @@ class RegisterController extends Controller
         }
 
     }
+    public function register(Request $request)
+    {
+        $request->validate([
+            'sponsor_code'=>'required',
+            'first_name'=>'required|min:2|max:25',
+            'last_name'=>'required|min:2|max:25',
+            'username'=>'required|unique:users',
+            'email'=>'required|email|unique:users',
+            'phone'=>'required|numeric|unique:users',
+            'password'=>'required|confirmed|min:6|max:25',
+            'confirmed_password'=>'required',
+        ]);
+
+    }
     
 }
