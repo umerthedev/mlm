@@ -83,7 +83,7 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="{{ url('/') }}" class="app-brand-link gap-2">
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">MLM</span>
                 </a>
               </div>
               <!-- /Logo -->
@@ -92,7 +92,7 @@
               <form id="formAuthentication" class="mb-3" action="{{ route('user.reg') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="sponsor_id" name="sponsor_code" value="{{ old('sponsor_code') }}" placeholder="Enter Sponsor Code" autofocus />
+                  <input type="text" class="form-control" id="sponsor_id" name="sponsor_code" value="{{ old('sponsor_code') }}" placeholder="Enter Sponsor Code"  />
                   <span id="sopn_msg"></span>
                   @error('sponsor_code')
     <span class="text-danger">{{ $message }}</span>
@@ -101,26 +101,26 @@
           
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="username" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" autofocus/>
+                  <input type="text" class="form-control" id="username" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" />
                   @error('first_name')
     <span class="text-danger">{{ $message }}</span>
 @enderror
                 </div>
                 <div class="mb-3">
                   <input
-                    type="text" class="form-control" id="username" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autofocus />
+                    type="text" class="form-control" id="username" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" />
                   @error('last_name')
     <span class="text-danger">{{ $message }}</span>
 @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" placeholder="Create Your User Name" autofocus />
+                  <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" placeholder="Create Your User Name" />
                   @error('username')
     <span class="text-danger">{{ $message }}</span>
 @enderror
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control"  name="phone" value="{{ old('phone') }}" placeholder="Phone Number" autofocus />
+                  <input type="text" class="form-control"  name="phone" value="{{ old('phone') }}" placeholder="Phone Number" />
                   @error('phone')
     <span class="text-danger">{{ $message }}</span>
 @enderror
@@ -168,7 +168,9 @@
                   </div>
                 </div> --}}
                 <div class="showbtn">
-                <button type="submit"  class="btn btn-primary d-grid w-100">Sign up</button></div>
+                  
+                <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
+              </div>
             </form>
       <div class="logs">
       <p class="text-center" >
