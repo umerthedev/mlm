@@ -4,9 +4,8 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Generation;
-use Hash ;
+use App\Models\{User,Generation};
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -57,28 +56,33 @@ class RegisterController extends Controller
                 // dd($model);
                 $model->save();
 
-                return view('user.auth.login');
-        // if($sponsor_check)
-        // {
-        //     $sponsor_details = User::where(['username'=>$request->sponsor_code,'status'=>1])->first();
-        //     $model - new User();
-        //     $model->first_name = $request->first_name;
-        //     $model->last_name = $request->last_name;
-        //     $model->username = $request->username;
-        //     $model->email = $request->email;
-        //     $model->phone = $request->phone;
-        //     $model->sponsor_code = $sponsor_details->id;
-        //     $model->password = Hash::make($request->password);
-        //     // dd($model);
-        //     $model->save();
-            
-        //     return view('user.auth.login');
+                // return view('user.auth.login');  
+                $user_id = $model->id;
+                $sponsor_id = $sponsor_details->id;
+                 
+                //first level
+                User::where(['id'=>$sponsor_id, 'status'=>1])->increment('direct_group',1);
+                User::where(['id'=>$sponsor_id, 'status'=>1])->increment('total_group',1);
+                $level = new Generation();
+                $level->main_id = $sponsor_id;
+                $level->member_id = $user_id;
+                $level->gen_type = 1;
+                $level->save();
+
+                //generation
+                $i = 2;
+                $generation = $this->generation_loop($sponsor_id,$user_id,$i);
            
         }else
         {
             // return redirect()->back()->with('error','Sponsor ID not found');
-        }
+        }// sponsor_check if function end
         
+    }//store function end
+
+    public function generation_loop($sponsor_id,$user_id,$i)
+    {
+
     }
     
 }
