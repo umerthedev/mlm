@@ -87,6 +87,9 @@
                 </a>
               </div>
               <!-- /Logo -->
+
+              
+
               
 
               <form id="formAuthentication" class="mb-3" action="{{ route('user.reg') }}" method="POST">

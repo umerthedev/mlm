@@ -135,8 +135,14 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              {{-- flash message --}}
+              @if (Session::has('msg'))
+<div class ="alert alert-{{ session('msg_class') }}" >
+              {{ session('msg') }}
+              </div>
+@endif
+              {{-- flash message end --}}
+              
 
               <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">

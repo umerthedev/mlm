@@ -52,10 +52,11 @@ class RegisterController extends Controller
                 $model->email = $request->email;
                 $model->phone = $request->phone;
                 $model->sponsor_code = $sponsor_details->id;
-                $model->password = Hash::make($request->password);               
+                $model->password = Hash::make($request->password);
+                // dd($model);
                 $model->save();
 
-                 
+                // return view('user.auth.login');  
                 $user_id = $model->id;
                 $sponsor_id = $sponsor_details->id;
                  
@@ -68,14 +69,19 @@ class RegisterController extends Controller
                 $level->gen_type = 1;
                 $level->save();
 
-                //Generation
+                //generation
                 $i = 2;
                 $generation = $this->generation_loop($sponsor_id,$user_id,$i);
+
+                session()->flash('msg_class','success');
+                session()->flash('msg','Registration Successfull');                
                 return redirect()->route('user.login');
            
         }else
         {
-            // return redirect()->back()->with('error','Sponsor ID not found');
+            session()->flash('msg_class','danger');
+                session()->flash('msg','Registration failed');                
+                return redirect()->route('user.login');
         }// sponsor_check if function end
         
     }//store function end
@@ -83,21 +89,25 @@ class RegisterController extends Controller
     public function generation_loop($sponsor_id,$user_id,$i)
     {
         $user_details_check = User::where(['id'=>$sponsor_id,'status'=>1])->exists();
-        if($user_details_check){
+        if($user_details_check)
+        {
             $sponsor_details = User::where(['id'=>$sponsor_id,'status'=>1])->first();
-            if($sponsor_details->sponsor_code!=''){
+            if($sponsor_details->sponsor_code!='')
+            {
               $sponsor_sponsor_id = $sponsor_details->sponsor_code;
               User::where(['id'=>$sponsor_sponsor_id,'status'=>1])->increment('total_group',1);
               $level = new Generation();
               $level->main_id = $sponsor_sponsor_id;
               $level->member_id = $user_id;
               $level->gen_type = $i;
-              $level->save();
-              $i = $i++;
-              if($i<=7){
+              $level->save();  
+              $i = $i+1;
+              if($i<=7)
+              {
                   return $this->generation_loop($sponsor_sponsor_id,$user_id,$i);
-              }
+              }            
             }
+            
         }
     }
     
