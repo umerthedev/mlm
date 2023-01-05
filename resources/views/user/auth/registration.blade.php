@@ -92,9 +92,9 @@
               <form id="formAuthentication" class="mb-3" action="{{ route('user.reg') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="sponsor_id" name="sponsor_code" value="{{ old('sponsor_code') }}" placeholder="Enter Sponsor Code"  />
+                  <input type="text" class="form-control" id="sponsor_id" name="sponsor_id" value="{{ old('sponsor_code') }}" placeholder="Enter Sponsor Code"  />
                   <span id="sopn_msg"></span>
-                  @error('sponsor_code')
+                  @error('sponsor_id')
     <span class="text-danger">{{ $message }}</span>
 @enderror
                   

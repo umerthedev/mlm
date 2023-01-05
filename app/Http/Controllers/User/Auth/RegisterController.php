@@ -30,7 +30,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'sponsor_code'=>'required',
+            'sponsor_id'=>'required',
             'first_name'=>'required|min:2|max:25',
             'last_name'=>'required|min:2|max:25',
             'username'=>'required|unique:users',
@@ -41,10 +41,10 @@ class RegisterController extends Controller
         ]);
 
 
-            $sponsor_check = User::where(['username'=>$request->sponsor_code,'status'=>1])->exists();
+            $sponsor_check = User::where(['username'=>$request->sponsor_id,'status'=>1])->exists();
             if($sponsor_check)
             {
-                $sponsor_details = User::where(['username'=>$request->sponsor_code,'status'=>1])->first();
+                $sponsor_details = User::where(['username'=>$request->sponsor_id,'status'=>1])->first();
                 $model = new User();
                 $model->first_name = $request->first_name;
                 $model->last_name = $request->last_name;
@@ -52,11 +52,10 @@ class RegisterController extends Controller
                 $model->email = $request->email;
                 $model->phone = $request->phone;
                 $model->sponsor_code = $sponsor_details->id;
-                $model->password = Hash::make($request->password);
-                // dd($model);
+                $model->password = Hash::make($request->password);               
                 $model->save();
 
-                // return view('user.auth.login');  
+                 
                 $user_id = $model->id;
                 $sponsor_id = $sponsor_details->id;
                  
@@ -69,9 +68,10 @@ class RegisterController extends Controller
                 $level->gen_type = 1;
                 $level->save();
 
-                //generation
+                //Generation
                 $i = 2;
                 $generation = $this->generation_loop($sponsor_id,$user_id,$i);
+                return redirect()->route('user.login');
            
         }else
         {
@@ -82,7 +82,23 @@ class RegisterController extends Controller
 
     public function generation_loop($sponsor_id,$user_id,$i)
     {
-
+        $user_details_check = User::where(['id'=>$sponsor_id,'status'=>1])->exists();
+        if($user_details_check){
+            $sponsor_details = User::where(['id'=>$sponsor_id,'status'=>1])->first();
+            if($sponsor_details->sponsor_code!=''){
+              $sponsor_sponsor_id = $sponsor_details->sponsor_code;
+              User::where(['id'=>$sponsor_sponsor_id,'status'=>1])->increment('total_group',1);
+              $level = new Generation();
+              $level->main_id = $sponsor_sponsor_id;
+              $level->member_id = $user_id;
+              $level->gen_type = $i;
+              $level->save();
+              $i = $i++;
+              if($i<=7){
+                  return $this->generation_loop($sponsor_sponsor_id,$user_id,$i);
+              }
+            }
+        }
     }
     
 }
