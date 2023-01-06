@@ -144,24 +144,31 @@
               {{-- flash message end --}}
               
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('user.login.auth') }}" method="POST">
+                @csrf
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    name="email"
+                    placeholder="Enter your email"
                     autofocus
                   />
+                  @error('email')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="password" name="password">Password</label>
                     <a href="auth-forgot-password-basic.html">
                       <small>Forgot Password?</small>
                     </a>
+                    @error('password')
+    <span class="text-danger">{{ $message }}</span>
+@enderror
                   </div>
                   <div class="input-group input-group-merge">
                     <input
