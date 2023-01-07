@@ -23,7 +23,7 @@ class LoginController extends Controller
         if(Auth::attempt(['email' =>$request->email, 'password' => $request->password, 'status'=>1]))
         {
             $request->session()->regenerate();
-            return redirect()->route('user.home');
+            return redirect()->route('user.dashboard');
         }
         session()->flash('msg_class','danger');
         session()->flash('msg','The provided credentials do not match our records.');                

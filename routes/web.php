@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\Auth\RegisterController;
+use App\Http\Controllers\User\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,7 @@ Route::post('/searchsponsor',[RegisterController::class,'searchsponsor'])->name(
 Route::post('/store',[RegisterController::class,'store'])->name('user.reg');
 //user login
 Route::post('/login',[LoginController::class,'loginProccess'])->name('user.login.auth');
+//user dashboard
+Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashboard');
 
 
