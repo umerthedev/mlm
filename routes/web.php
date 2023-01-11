@@ -36,6 +36,9 @@ Route::post('/searchsponsor',[RegisterController::class,'searchsponsor'])->name(
 Route::post('/store',[RegisterController::class,'store'])->name('user.reg');
 //user login
 Route::post('/login',[LoginController::class,'loginProccess'])->name('user.login.auth');
+
+//user logout
+Route::get('/logout', [LoginController::class,'logout'])->name('user.logout');
 //user dashboard
 Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashboard');
 

@@ -29,4 +29,9 @@ class LoginController extends Controller
         session()->flash('msg','The provided credentials do not match our records.');                
         return redirect()->route('user.login');
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('user.login');
+    }
 }
