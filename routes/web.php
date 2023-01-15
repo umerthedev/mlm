@@ -5,6 +5,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\Dashboard\DashboardController;
+use App\Http\Controllers\User\User_Profile\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,7 @@ Route::post('/login',[LoginController::class,'loginProccess'])->name('user.login
 Route::get('/logout', [LoginController::class,'logout'])->name('user.logout');
 //user dashboard
 Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashboard');
+//user Profile 
+Route::get('/profile',[UserProfileController::class,'userprofile'])->name('user.profile');
 
 
