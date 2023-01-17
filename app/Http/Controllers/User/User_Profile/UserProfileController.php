@@ -11,4 +11,8 @@ class UserProfileController extends Controller
    {
     return view('user.dashboard.profile.index');
    }
+   public function refferalcode()
+   {
+    return view('user.dashboard.profile.index');
+   }
 }

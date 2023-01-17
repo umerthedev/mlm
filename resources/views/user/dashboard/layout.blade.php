@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>{{ Auth::user()->first_name }} Dashboard</title>
+    <title>MLM Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="{{ asset('') }}dashboard_assets/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('') }}dashboard_assets/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('') }}dashboard_assets/assets/css/demo.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('') }}dashboard_assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 

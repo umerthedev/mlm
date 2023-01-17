@@ -44,5 +44,7 @@ Route::get('/logout', [LoginController::class,'logout'])->name('user.logout');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('user.dashboard');
 //user Profile 
 Route::get('/profile',[UserProfileController::class,'userprofile'])->name('user.profile');
+//refferal code 
+Route::get('/account/{id}',[UserProfileController::class,'refferalcode'])->name('refferal.reg');
 
 
