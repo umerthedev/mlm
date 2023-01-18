@@ -96,16 +96,19 @@
                     ?>
                     <div class="card-body text-center">
                         <h1 for="address" class="form-label ">Share Your Link</h1>
-                        <input type="text" class="form-control" id="address" name="address"
+                        <input type="text" class="form-control" id="copyurl" name="address"
                             value="{{ route('refferal.reg', $url) }}" disabled />
                         <br>
 
                         <div class="form-control">
-                            <a href="https://api.whatsapp.com/send?text={{ route('refferal.reg', $url) }}"><i
-                                    class="fa fa-whatsapp p-2" style="font-size:48px;"></i>
-                                <a href="https://www.facebook.com/sharer.php?u={{ route('refferal.reg', $url) }}"><i
-                                        class="fa fa-facebook p-2" style="font-size:48px;"></i>
-                                    <a href=""><i class="fa fa-copy p-2" style="font-size:48px;"></i>
+                            <a class="btn btn-success"
+                                href="https://api.whatsapp.com/send?text={{ route('refferal.reg', $url) }}"><i
+                                    class="fa fa-whatsapp p-2" style="font-size:48px;"></i></a>
+                            <a class="btn btn-success"
+                                href="https://www.facebook.com/sharer.php?u={{ route('refferal.reg', $url) }}"><i
+                                    class="fa fa-facebook p-2" style="font-size:48px;"></i></a>
+                            <button class="btn btn-success" onclick="myFunction()"><i class="fa fa-copy p-2"
+                                    style="font-size:48px;"></i></button>
                         </div>
                     </div>
 
@@ -136,6 +139,16 @@
 
     </div>
     <!-- / Content -->
+    {{-- copy clipboard code  --}}
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("copyurl");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+        }
+    </script>
+    {{-- copy clipboard code  --}}
 
 
 
